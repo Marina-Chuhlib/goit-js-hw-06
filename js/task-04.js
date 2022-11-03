@@ -6,21 +6,29 @@ const valueRef = document.querySelector("#value");
 
 let counterValue = 0;
 
+const render = () => {
+  valueRef.textContent = counterValue;
+};
+
 const handleClickDecrement = () => {
   counterValue -= 1;
 
   valueRef.textContent = counterValue;
+  render();
 };
 
 const handleClickIncremen = () => {
   counterValue += 1;
 
   valueRef.textContent = counterValue;
+  render();
 };
 
 decrementBtn.addEventListener("click", handleClickDecrement);
 
 incrementBtn.addEventListener("click", handleClickIncremen);
+
+render();
 
 // Счетчик состоит из спана и кнопок, которые, при клике, должны увеличивать и уменьшать его значение на единицу.
 
