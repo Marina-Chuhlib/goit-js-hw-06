@@ -5,10 +5,12 @@ const inputLength = Number(inputRef.dataset.length);
 const onValidation = (event) => {
   const value = event.target.value;
 
+  inputRef.classList.add("invalid");
+
   if (value.trim().length === inputLength && value.trim() !== "") {
-    inputRef.classList.add("valid");
+    inputRef.classList.replace("invalid", "valid");
   } else {
-    inputRef.classList.add("invalid");
+    inputRef.classList.replace("valid", "invalid");
   }
 };
 

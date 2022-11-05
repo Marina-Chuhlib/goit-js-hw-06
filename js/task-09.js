@@ -7,7 +7,7 @@ const refs = {
   color: document.querySelector(".color"),
 };
 
-const onClickButton = (event) => {
+const onClickButton = () => {
   document.body.style.backgroundColor = getRandomHexColor();
 
   refs.color.textContent = document.body.attributes.style.value;

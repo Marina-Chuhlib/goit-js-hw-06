@@ -2,6 +2,40 @@ function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
+const refs = {
+  inputValue: document.querySelector("#controls>input"),
+  buttonCreate: document.querySelector(`button[data-create]`),
+  buttonDestroy: document.querySelector(`button[data-destroy]`),
+  boxes: document.querySelector("#boxes"),
+};
+
+const createBoxes = (amount) => {
+  const elementsToAdd = [];
+  for (let i = 0; i < amount; i++) {
+    const div = document.createElement("div");
+    div.style.height = `${30 + 10 * i}px`;
+    div.style.width = `${30 + 10 * i}px`;
+    div.style.backgroundColor = getRandomHexColor();
+    elementsToAdd.push(div);
+  }
+  return elementsToAdd;
+};
+
+const onButtonCreateClick = () => {
+  let boxesToAdd = createBoxes(refs.inputValue.value);
+
+  refs.boxes.append(...boxesToAdd);
+};
+refs.buttonCreate.addEventListener("click", onButtonCreateClick);
+
+const destroyBoxes = () => {
+  refs.boxes.innerHTML = "";
+};
+const onButtonDestroyClick = () => {
+  destroyBoxes.call();
+};
+refs.buttonDestroy.addEventListener("click", onButtonDestroyClick);
+
 // Напиши скрипт создания и очистки коллекции элементов. Пользователь вводит количество элементов в input и нажимает кнопку Создать, после чего рендерится коллекция. При нажатии на кнопку Очистить, коллекция элементов очищается.
 
 // <div id="controls">
